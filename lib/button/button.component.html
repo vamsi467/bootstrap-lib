@@ -1,0 +1,10 @@
+<!-- If the loading is false and an icon is provided, display the icon -->
+<i *ngIf="!loading && icon" [class]="getIcon"></i>
+<!-- If the loading is true and loadingText is provided, display the loadingText. Otherwise, display the normal content -->
+<span *ngIf="loading && loadingText; else content">{{ loadingText }}</span>
+<!-- Define the content as a ng-template, to be displayed when loading is false or loadingText is not provided -->
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+<!-- If loading is true, display a loading spinner -->
+<span class="loading" *ngIf="loading"></span>

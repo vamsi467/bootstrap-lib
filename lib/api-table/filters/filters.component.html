@@ -1,0 +1,9 @@
+<!-- filters.component.html -->
+<!-- A dropdown select element that displays the available filter options -->
+<select *ngFor="let filter of filters" class="form-control custom-select mr-2"
+    (change)="setFilterValue($event, filter)">
+    <!-- The default disabled option that prompts the user to select a filter -->
+    <option value="" disabled selected>Select {{filter.label}}</option>
+    <!-- Loop through each option in the filter and display them as dropdown options -->
+    <option *ngFor="let option of filter.options" [value]="option.value || option">{{option.label || option}}</option>
+</select>

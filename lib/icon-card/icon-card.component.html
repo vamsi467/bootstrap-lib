@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="d-flex align-items-center justify-content-between p-3">
+        <div class="d-flex align-items-center">
+            <ng-content select="[icon]"></ng-content>
+            <div>
+                <p class="m-0 text-dark font-weight-bold">{{title}}</p>
+                <p class="m-0 text-dark">
+                    {{subtitle}}
+                </p>
+            </div>
+        </div>
+        <div>
+            <ng-content select="[actions]"></ng-content>
+        </div>
+    </div>
+</div>

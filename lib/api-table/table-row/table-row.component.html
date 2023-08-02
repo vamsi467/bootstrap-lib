@@ -1,0 +1,16 @@
+<!-- This code block represents a table row in the table. It uses ng-container for iteration over the columns array. -->
+<ng-container *ngFor="let column of columns;let index;">
+    <!-- Check if the column type is not 'actions', and display the cell content accordingly -->
+    <td *ngIf="column.type !== 'actions'" style="vertical-align: middle;">
+        <!-- If the column has a formatter defined, use it to format the value. Otherwise, display the raw value. -->
+        {{column.formatter?.type ? (getValue(row, column) | date:column.formatter?.format) : getValue(row, column)}}
+    </td>
+    <!-- If the column type is 'actions', display action buttons within a flex container. -->
+    <td *ngIf="column.type === 'actions'" class="d-flex">
+        <!-- Loop through each action defined for the column and create a button for each one. -->
+        <button app-button [icon]="action.icon" class="mr-2" (click)="actionHandler(action.value, column, index)"
+            color="dark" variant="text" *ngFor="let action of column.actions">
+            {{action.label}}
+        </button>
+    </td>
+</ng-container>
