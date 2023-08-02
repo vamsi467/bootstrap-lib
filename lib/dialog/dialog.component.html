@@ -1,0 +1,22 @@
+<!-- This template defines the structure of the modal dialog component -->
+<ng-template #content let-modal>
+    <!-- Modal header -->
+    <div class="modal-header align-items-center justify-content-start">
+        <!-- Display an icon in the header if 'icon' is provided and allow closing the modal when clicked -->
+        <app-icon class="mr-2" *ngIf="icon" [icon]="icon" aria-label="close" (click)="close()"></app-icon>
+        <!-- Display the modal title in the header -->
+        <h2 class="modal-title">{{title}}</h2>
+        <!-- Display a close icon on the top right corner if 'showClose' is true, and allow closing the modal when clicked -->
+        <app-icon class="ml-auto" *ngIf="showClose" icon="close" aria-label="close" (click)="close()"></app-icon>
+    </div>
+    <!-- Modal body -->
+    <div class="modal-body">
+        <!-- Display the content inside the modal body -->
+        <ng-content></ng-content>
+    </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+        <!-- Display actions (e.g., buttons) provided in the parent component within the modal footer -->
+        <ng-content select="[actions]"></ng-content>
+    </div>
+</ng-template>

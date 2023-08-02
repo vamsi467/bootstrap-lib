@@ -1,0 +1,40 @@
+<!-- This template represents the content of the 'api-response-dialog' component -->
+<app-dialog [showClose]="false" #dialog title="Unban Address" [icon]="!error?'shield':''">
+    <!-- The content of the dialog component is enclosed within a flex container -->
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <!-- Display a success animation and message if 'error' is false (i.e., response is successful) -->
+        <div *ngIf="!error" class="mb-3 ">
+            <div class="background_success text-center">
+                <img class="w-50" src="../../../assets/images/check-outline-success.gif">
+            </div>
+        </div>
+        <!-- Display an error image if 'error' is true (i.e., response is unsuccessful) -->
+        <div style="height: 250px;" *ngIf="error"
+            class="mb-3 d-flex justify-content-center flex-column align-items-center w-100">
+            <img class="w-50" src="../../../assets/images/error.svg">
+        </div>
+        <!-- Display the message and appropriate content based on the success/error state -->
+        <div class="mb-5 text-center">
+            <h5>{{!error? 'Success':'Failed'}}</h5>
+            <div *ngIf="!error" class="text-muted">{{message}} 🎉</div>
+            <div *ngIf="error">{{message}}</div>
+            <div *ngIf="error" class="px-4 my-4" style="color: #6D6F71;">
+                <span class="">{{errorMessage}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- The footer section contains action buttons -->
+    <div actions class="d-flex w-100 flex-column">
+        <!-- Display a 'Done' button for success response or a 'Close' button for error response -->
+        <button type="submit" (click)="close()" app-button color="primary" variant="outline" class="w-100"> {{
+            !error? 'Done':'Close'
+            }}
+        </button>
+        <!-- Display a support contact link for error response -->
+        <div *ngIf="error" class="w-100 text-center mt-3 mb-2 ">
+            <img src="../../../../../assets/images/contact-support.svg" class="mr-2" />
+            <a class='support_email text-black my_custom_link' [id]="'open-intercom'" href='mailto:support@lmnl.app'
+                target="_top"> Contact Support </a>
+        </div>
+    </div>
+</app-dialog>
